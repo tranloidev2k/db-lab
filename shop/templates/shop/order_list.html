@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Orders</title></head>
+<body>
+  <h1>20 order mới nhất</h1>
+  <table border="1" cellpadding="4">
+    <tr><th>ID</th><th>Customer</th><th>Products</th></tr>
+    {% for o in orders %}
+      <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.customer.email }}</td>
+        <td>{% for item in o.items.all %}{{ item.product.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
